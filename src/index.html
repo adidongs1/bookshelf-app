@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="icon" type="image/svg+xml" href="./assets/icon/bookshelf-app.svg" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./dist/output.css" rel="stylesheet">
+
+    <title>BookShelf App</title>
+</head>
+
+<body class="bg-white">
+    <div class="container-2xl">
+        <nav class="navbar bg-primary justify-center">
+            <a class="btn btn-ghost text-xl text-white font-bold">BOOKSHELF APP</a>
+        </nav>
+        <main class="container mx-auto ">
+            <div class="flex flex-col justify-center">
+
+                <section class="hero min-h-screen">
+                    <div class="hero-content flex-col lg:flex-row sm:p-0">
+                        <img src="./assets/readingbook.svg" class=" w-full max-w-[600px] rounded-lg shadow-2xl" />
+                        <div class="lg:px-8 text-center">
+                            <h1 class="text-6xl font-bold">KELOLA BUKU <span class="text-primary">BACAAN KAMU.</span>
+                            </h1>
+                            <p class="py-6 text-secondary font-medium text-2xl">Bookshelf App membantu mengelola
+                                buku-buku kamu yang
+                                pernah atau
+                                sedang baca dengan
+                                mudah.</p>
+                            <a href="#addBookForm">
+                                <button
+                                    class="btn bg-primary text-white px-4 py-3 w-full text-base  hover:bg-transparent hover:border-2 hover:border-primary hover:text-primary">Tambah
+                                    Buku Baru</button>
+
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <div id="addBookForm" class="hero min-h-screen">
+                    <div class="hero-content flex-col lg:flex-row-reverse">
+                        <div class="card-body bg-base-100 rounded-3xl">
+                            <form id="inputBook" class=" mt-6">
+                                <label class="form-control">
+                                    <div class="label">
+                                        <span class="label-text text-xl">Judul</span>
+                                    </div>
+                                    <input type="text" placeholder="judul buku..." id="inputBookTitle"
+                                        class="input input-bordered" required />
+
+                                    <div class="label">
+                                        <span class="label-text text-xl">Penulis</span>
+                                    </div>
+                                    <input type="text" placeholder="penulisnya..." id="inputBookAuthor"
+                                        class="input input-bordered" required />
+
+                                    <div class="label">
+                                        <span class="label-text text-xl">Tahun Terbit</span>
+                                    </div>
+                                    <input type="number" placeholder="tahun terbit..." min="1900" id="inputBookYear"
+                                        class="input input-bordered" required />
+
+                                    <div class="form-control">
+                                        <label class="label cursor-pointer justify-start gap-4">
+                                            <input type="checkbox" checked="checked" id="inputBookIsComplete"
+                                                class="checkbox checkbox-primary" />
+                                            <p class="text-xl">Selesai dibaca</p>
+                                        </label>
+                                    </div>
+
+                                </label>
+                                <button class="btn btn-primary btn-block" id="bookSubmit" type="submit"
+                                    name="Submit">Simpan Buku</button>
+
+
+                            </form>
+                        </div>
+                        <div class="text-center lg:text-right">
+                            <h1 class="text-5xl font-bold">Tambahkan Bukumu!</h1>
+                            <p class="py-6">
+                                Tambahkan buku yang kamu baca ke dalam Bookshelf App. Kamu bisa menambahkan buku yang
+                                sudah kamu baca atau yang sedang kamu baca. Kapanpun dan dimanapun.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <article id="bookShelf">
+
+                    <section class="py-8">
+                        <div class="title-rack flex flex-col justify-center items-center bg-">
+                            <h2 class="text-2xl font-bold">Buku Belum Selesai Dibaca</h2>
+
+                        </div>
+                        <div id="uncompleted-books" class="list-book flex flex-wrap justify-center gap-4 mt-8">
+
+                        </div>
+
+                    </section>
+                    <section class="py-8">
+                        <div class="title-rack flex flex-col justify-center items-center bg-">
+                            <h2 class="text-2xl font-bold">Buku Sudah Selesai Dibaca</h2>
+
+                        </div>
+
+
+                        <div id="completed-books" class="list-book flex flex-wrap justify-center gap-4 mt-8">
+
+                        </div>
+
+
+                    </section>
+                </article>
+
+            </div>
+        </main>
+
+        <footer class="footer items-center p-4 mt-8 bg-primary text-white">
+            <aside class="items-center grid-flow-col">
+                <p>Copyright © 2023 Adi Arifin - All right reserved</p>
+            </aside>
+            <nav class="flex flex-col gap-1 md:place-self-center md:justify-self-end">
+                <section>
+                    <header class="footer-title">Social</header>
+                </section>
+                <section class="flex flex-row gap-4">
+                    <a target="_blank" href="https://www.linkedin.com/in/adiarifin15/">
+                        <img class="h-6" src="./assets/icon/linkedin.svg" alt="linkedin">
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/adiiarifin/">
+                        <img class="h-6" src="./assets/icon/instagram.svg" alt="instagram">
+                    </a>
+                    <a target="_blank" href="https://github.com/adidongs1">
+                        <img class="h-6" src="./assets/icon/github.svg" alt="github">
+                    </a>
+                </section>
+            </nav>
+        </footer>
+    </div>
+
+
+
+    <dialog id="editForm" class="modal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg">Edit Buku</h3>
+            <form id="editBook" class=" mt-6">
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text text-xl">Judul</span>
+                    </div>
+                    <input type="text" placeholder="judul buku..." id="editBookTitle" class="input input-bordered"
+                        required />
+
+                    <div class="label">
+                        <span class="label-text text-xl">Penulis</span>
+                    </div>
+                    <input type="text" placeholder="penulisnya..." id="editBookAuthor" class="input input-bordered"
+                        required />
+
+                    <div class="label">
+                        <span class="label-text text-xl">Tahun Terbit</span>
+                    </div>
+                    <input type="number" placeholder="tahun terbit..." min="1900" id="editBookYear"
+                        class="input input-bordered" required />
+
+                </label>
+                <button class="btn btn-primary btn-block mt-6" id="btnEditForm" type="submit" name="Submit">Simpan
+                    Buku</button>
+
+
+            </form>
+            <div class="modal-action">
+                <form method="dialog">
+
+                    <button class="btn btn-block">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <div role="alert"
+        class="alert alert-success fixed w-1/2 left-1/2 top-[15%]  z-50 transform-gpu -translate-x-1/2 -translate-y-1/2 hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>Your purchase has been confirmed!</span>
+    </div>
+
+
+    <script src="./js/storage.js"></script>
+    <script src="./js/main.js"></script>
+
+</body>
+
+</html>
